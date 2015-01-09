@@ -29,4 +29,4 @@ relative_permalinks: true
 # Google Analytics
 analytics:
   # Add tracking code in _includes/_google-analytics.html
-  google: false
+  google: true
