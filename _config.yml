@@ -1,5 +1,5 @@
 # general configuration
-url: http://claman.github.io
+url: http://excentris.net
 baseurl: ''
 
 # compass configuration
@@ -7,9 +7,9 @@ compass:
   # an avatar or logo (optional)
   logo: "/images/compass.png"
   # author will appear under the avatar (optional)
-  author: "Alex Claman"
+  author: "Compass"
   # tagline will appear under the title (optional)
-  tagline: "My Github landing page"
+  tagline: "The <a href='http://jekyllrb.com'>Jekyll</a> theme for your personal landing page"
   # if include_content is true, the contents of the content.html include will be
   # added right above the generated item list, if present
   include_content: true
@@ -20,7 +20,7 @@ compass:
 
 # Dependencies
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 
 # Permalinks
 permalink: pretty
