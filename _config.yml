@@ -1,5 +1,5 @@
 # general configuration
-url: http://excentris.net
+url: http://claman.github.io
 baseurl: ''
 
 # compass configuration
@@ -24,4 +24,3 @@ highlighter: pygments
 
 # Permalinks
 permalink: pretty
-relative_permalinks: true
