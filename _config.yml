@@ -18,6 +18,9 @@ compass:
   # Tracking Code to that file.
   include_analytics: false
 
+# exclude
+exclude: ["CNAME", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
+
 # Dependencies
 markdown: kramdown
 highlighter: rouge
