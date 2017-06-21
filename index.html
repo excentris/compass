@@ -5,23 +5,37 @@ layout: base
     <header>
         {% if site.compass.logo %}
         <div class="logo-container">
-          <a class="logo" href="{{ page.baseurl }}" style="background-image: url('{{ site.baseurl }}{{ site.compass.logo }}')"></a>
+            <a class="logo" href="{{ page.baseurl }}" style="background-image: url('{{ site.baseurl }}{{ site.compass.logo }}')"></a>
         </div>
         {% endif %}
-
         {% if site.compass.author %}
-        <div class="author-container"><h1>{{ site.compass.author }}</h1></div>
+        <div class="author-container">
+            <h1>{{ site.compass.author }}</h1>
+        </div>
         {% endif %}
-
         {% if site.compass.tagline %}
-        <div class="tagline-container"><p>{{ site.compass.tagline }}</p></div>
+        <div class="tagline-container">
+            <p>{{ site.compass.tagline }}</p>
+        </div>
         {% endif %}
     </header>
     <main>
-      {% if site.compass.include_content %}
-      <div class="content">
-        {% include content.html %}
-      </div>
-      {% endif %}
+        {% if site.compass.include_content %}
+        <div class="content">
+            {% include content.html %}
+        </div>
+        {% endif %}
     </main>
+    <hr>
+
+    <div class="section group">
+        <div class="col span_4_of_12"></div>
+        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a class="fa fa-github fa-3x"></a></div>
+        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a class="fa fa-envelope fa-3x"></a></div>
+        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a class="fa fa-folder-open fa-3x"></a></div>
+        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a class="fa fa-music fa-3x"></a></div>
+        <div class="col span_4_of_12"></div>
+    </div>
 </div>
+
+<canvas id="landingPageCanvas" style="border: 1px solid black"></canvas>

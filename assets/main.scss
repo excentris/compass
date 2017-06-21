@@ -18,7 +18,10 @@ main {
 
 /*** wrapper div for both header and main ***/
 .wrapper {
-	margin-top: 10%;
+	margin-top: 6%;
+	.noUnderline a:hover{
+		text-decoration: none;
+	}
 }
 
 /*** anchor tags ***/
@@ -80,7 +83,7 @@ since it must be aligned with the content */
 
 /*** tagline ***/
 .tagline-container p {
-	font-size: 1.3em;
+	font-size: 1.1em;
 	text-align: center;
 	margin-bottom: 2em;
 }
