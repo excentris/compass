@@ -9,6 +9,11 @@ body {
 	font-family: 'Vollkorn', serif;
 	color: $text-color;
 	background-color: $background-color;
+
+	.contentDiv{
+		z-index: 1;
+		position: relative;
+	}
 }
 
 header,
