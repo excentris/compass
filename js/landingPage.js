@@ -9,6 +9,7 @@ function main(){
   ctx.canvas.width = window.innerWidth;
 
   let points = new Points(ctx, canvas);
+  window.addEventListener('resize', points.render());
   points.render();
 }
 

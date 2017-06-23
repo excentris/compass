@@ -5,16 +5,24 @@
 class Points extends Animation{
   constructor(ctx, can){
     super(ctx, can);
-    //document.addEventListener("mousemove", this.mouseDownHandler);
     $(document).bind("mousemove", this.mouseDownHandler );
+    this.initShader();
+    this.numVertices = this.circleVertices();
+    if(this.numVertices < 0){
+      console.log("Failed to create circle");
+      return;
+    }
   }
 
   getVertexShader(){
     return `
       attribute vec4 aPosition;
-      
+      uniform vec2 uScale;
       void main() {
-        gl_Position = aPosition;
+          gl_Position.x = aPosition.x * uScale.x;
+          gl_Position.y = aPosition.y * uScale.y;
+          gl_Position.z = aPosition.z;
+          gl_Position.w = 1.0;
       }
     `;
   }
@@ -62,14 +70,25 @@ class Points extends Animation{
 
 
   render(){
-    this.initShader();
-    let n = this.circleVertices();
-    if(n < 0){
-      console.log("Failed to create circle");
-      return;
+
+    var width = this.CANVAS.getAttribute("width"), height = this.CANVAS.getAttribute("height");
+    // Fullscreen if not set
+    if (!width || width < 0) {
+      this.CANVAS.width = window.innerWidth;
+      this.glContext.maxWidth = window.innerWidth;
     }
+    if (!height || height < 0) {
+      this.CANVAS.height = window.innerHeight;
+      this.glContext.maxHeight = window.innerHeight;
+    }
+
+    // viewport!
+    this.glContext.viewport(0, 0, this.CANVAS.width, this.CANVAS.height);
     this.glContext.clearColor(241/255,238/255,217/255,1);
     this.glContext.clear(this.glContext.COLOR_BUFFER_BIT);
-    this.glContext.drawArrays(this.glContext.TRIANGLE_STRIP, 0, n);
+    this.glContext.drawArrays(this.glContext.TRIANGLE_STRIP, 0, this.numVertices);
+    var uScale = this.glContext.getUniformLocation(this.shaderProgram, 'uScale');
+    this.glContext.uniform2f(uScale, 0.5, 0.5);
+
   }
 }
