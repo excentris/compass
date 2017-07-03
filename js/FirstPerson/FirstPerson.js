@@ -4,10 +4,14 @@
  * Tutorial: https://youtu.be/axGQAMqsxdw?list=PLCTVwBLCNozSGfxhCIiEH26tbJrQ2_Bw3
  */
 
-class FirstPerson{
+class FirstPerson extends Scene{
   constructor(){
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(90, 1280/720, 0.1, 1000);
+    super(900, 506);
+    this.initScene();
+    this.animate();
+  }
+
+  initScene(){
     this.mesh = new THREE.Mesh(
         new THREE.BoxGeometry(1,1,1),
         new THREE.MeshBasicMaterial({color: 0xdf6677, wireframe: true})
@@ -15,22 +19,16 @@ class FirstPerson{
 
     this.scene.add(this.mesh);
 
-    this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(1280, 720);
-    document.body.appendChild(this.renderer.domElement);
-    this.camera.position.set(0,0,-5);
-    this.camera.lookAt(new THREE.Vector3(0,0,0));
+
+    document.getElementById("canvasWrapper").appendChild(this.renderer.domElement);
+    this.setCameraPosition(0,0,-5);
+    this.setCameraLookAt(0,0,0);
     this.animate();
   }
 
   animate(){
-    requestAnimationFrame(this.animate.bind(this));
+    super.render();
     this.mesh.rotation.x += 0.01;
-    this.mesh.rotation.y += 0.01;
-    this.renderer.render(this.scene, this.camera);
+    this.mesh.rotation.y += 0.00;
   }
 }
-
-window.onload = function(){
-  new FirstPerson();
-};

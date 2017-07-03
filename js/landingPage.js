@@ -4,7 +4,8 @@
 
 
 function main(){
-  let canvas = document.getElementById("landingPageCanvas");
+  let canvas = document.createElement("canvas");
+  document.body.appendChild(canvas);
   let ctx = getContext(canvas, "experimental-webgl");
   ctx.canvas.width = window.innerWidth;
 
@@ -13,4 +14,4 @@ function main(){
   points.render();
 }
 
-window.onload = main;
+// window.onload = main;

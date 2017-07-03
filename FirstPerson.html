@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>First Person Scene</title>
-    <script src="js/lib/Three.js"></script>
-    <script src="js/FirstPerson/FirstPerson.js"></script>
-</head>
-<body>
-
-</body>
-</html>
+---
+layout: base
+---
+<div id="canvasWrapper"></div>
+<script src="{{ site.baseurl }}/js/lib/Three.js"></script>
+<script src="{{ site.baseurl }}/js/lib/Scene.js"></script>
+<script src="{{ site.baseurl }}/js/FirstPerson/FirstPerson.js"></script>
+<script>
+    $( document ).ready(function() {
+      new FirstPerson();
+    });
+</script>
