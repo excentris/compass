@@ -2,10 +2,19 @@
 # This comment ensures Jekyll can see this file
 ---
 
-canvas{
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+//canvas{
+//  padding-left: 0;
+//  padding-right: 0;
+//  margin-left: auto;
+//  margin-right: auto;
+//  display: block;
+//}
+
+.canvasWrapper{
+    width: 50vw;
+    height: 50vh;
+  canvas{
+
+    margin: 25vh 25vw;
+  }
 }

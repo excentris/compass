@@ -6,7 +6,8 @@
 
 class FirstPerson extends Scene{
   constructor(){
-    super(900, 506);
+    let size = getViewport();
+    super(0.5 * size[0], 0.5 * size[1], document.getElementById("canvasWrapper"));
     this.initScene();
     this.animate();
   }
@@ -20,7 +21,7 @@ class FirstPerson extends Scene{
     this.scene.add(this.mesh);
 
 
-    document.getElementById("canvasWrapper").appendChild(this.renderer.domElement);
+    this.canvasWrapper.appendChild(this.canvas);
     this.setCameraPosition(0,0,-5);
     this.setCameraLookAt(0,0,0);
     this.animate();

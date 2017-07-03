@@ -3,9 +3,10 @@
  */
 
 class Scene{
-  constructor(w, h){
+  constructor(w, h, cW){
     this.width = w;
     this.height = h;
+    this.canvasWrapper = cW;
     this.w_h_ratio = this.width / this.height;
     this.init();
   }
@@ -15,9 +16,20 @@ class Scene{
     this.camera = new THREE.PerspectiveCamera(90, this.width/this.height, 0.1, 1000);
 
     this.renderer = new THREE.WebGLRenderer();
+    this.canvas = this.renderer.domElement;
     this.renderer.setSize(this.width, this.height);
     this.setCameraPosition(0,0,0);
     this.setCameraLookAt(0,0,0);
+    window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
+  }
+
+  onWindowResize(){
+    let size = getViewport();
+
+
+    this.camera.aspect = size[0] / size[1];
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize( 0.5 * size[0], 0.5 * size[1]);
   }
 
   setCameraPosition(x,y,z){
