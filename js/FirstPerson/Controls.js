@@ -7,6 +7,7 @@ class Controls{
     this.camera = params.camera;
     this.keyboard = {};
     this.ROTATION_SPEED = 0.01;
+    this.MOVEMENT_SPEED = 0.01;
   }
 
   keyDown(event){
@@ -29,7 +30,9 @@ class Controls{
     }
   }
 
-  checkInput(){
+  checkInput(moveSpeed, rotSpeed){
+    this.MOVEMENT_SPEED = moveSpeed || this.MOVEMENT_SPEED;
+    this.ROTATION_SPEED = rotSpeed || this.ROTATION_SPEED;
     this.lookLeft();
     this.lookRight();
   }
