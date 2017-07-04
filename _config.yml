@@ -1,6 +1,6 @@
 # general configuration
 url: http://excentris.net
-baseurl: 'NickHoughton'
+baseurl: ''
 exclude: ['README.md', '.idea']
 
 # compass configuration
