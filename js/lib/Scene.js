@@ -14,13 +14,13 @@ class Scene{
   init(){
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(90, this.width/this.height, 0.1, 1000);
-
+    this.controls = new Controls({camera: this.camera});
     this.renderer = new THREE.WebGLRenderer();
     this.canvas = this.renderer.domElement;
     this.renderer.setSize(this.width, this.height);
     this.setCameraPosition(0,0,0);
     this.setCameraLookAt(0,0,0);
-    window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
+    this.attachListeners();
   }
 
   onWindowResize(){
@@ -43,5 +43,12 @@ class Scene{
   render(){
     requestAnimationFrame(this.animate.bind(this));
     this.renderer.render(this.scene, this.camera);
+    this.controls.checkInput();
+  }
+
+  attachListeners(){
+    window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
+    window.addEventListener('keydown', this.controls.keyDown.bind(this.controls));
+    window.addEventListener('keyup', this.controls.keyUp.bind(this.controls));
   }
 }
