@@ -8,6 +8,7 @@ class Controls{
     this.keyboard = {};
     this.ROTATION_SPEED = 0.01;
     this.MOVEMENT_SPEED = 0.01;
+    this.config = WSAD;
   }
 
   keyDown(event){
@@ -19,14 +20,64 @@ class Controls{
   }
 
   lookLeft(){
-    if(this.keyboard[37]){
-      this.camera.rotation.y -= Math.PI * this.ROTATION_SPEED;
+
+    switch(this.config){
+      case WSAD:
+        if(this.keyboard[Q_KEY]){
+          this.camera.rotation.y -= Math.PI * this.ROTATION_SPEED;
+        }
+        break;
+      case ARROW:
+        if(this.keyboard[LEFT_ARROW_KEY]){
+          this.camera.rotation.y -= Math.PI * this.ROTATION_SPEED;
+        }
+        break;
+      default:
+
     }
   }
   
   lookRight(){
-    if(this.keyboard[39]){
-      this.camera.rotation.y += Math.PI * this.ROTATION_SPEED;
+    switch(this.config){
+      case WSAD:
+        if(this.keyboard[E_KEY]){
+          this.camera.rotation.y += Math.PI * this.ROTATION_SPEED;
+        }
+        break;
+      case ARROW:
+        if(this.keyboard[RIGHT_ARROW_KEY]){
+          this.camera.rotation.y += Math.PI * this.ROTATION_SPEED;
+        }
+        break;
+      default:
+
+    }
+  }
+
+  strafeLeft(){
+    if(this.keyboard[A_KEY]){
+      this.camera.position.x += Math.cos(this.camera.rotation.y) * this.MOVEMENT_SPEED;
+      this.camera.position.z += Math.sin(this.camera.rotation.y) * this.MOVEMENT_SPEED;
+    }
+  }
+
+  strafeRight(){
+    if(this.keyboard[D_KEY]){
+      this.camera.position.x -= Math.cos(this.camera.rotation.y) * this.MOVEMENT_SPEED;
+      this.camera.position.z -= Math.sin(this.camera.rotation.y) * this.MOVEMENT_SPEED;
+    }
+  }
+  moveForward(){
+    if(this.keyboard[W_KEY]){
+      this.camera.position.x -= Math.sin(this.camera.rotation.y) * this.MOVEMENT_SPEED;
+      this.camera.position.z += Math.cos(this.camera.rotation.y) * this.MOVEMENT_SPEED;
+    }
+  }
+
+  moveBackward(){
+    if(this.keyboard[S_KEY]){
+      this.camera.position.x += Math.sin(this.camera.rotation.y) * this.MOVEMENT_SPEED;
+      this.camera.position.z -= Math.cos(this.camera.rotation.y) * this.MOVEMENT_SPEED;
     }
   }
 
@@ -35,5 +86,9 @@ class Controls{
     this.ROTATION_SPEED = rotSpeed || this.ROTATION_SPEED;
     this.lookLeft();
     this.lookRight();
+    this.moveForward();
+    this.moveBackward();
+    this.strafeRight();
+    this.strafeLeft();
   }
 }

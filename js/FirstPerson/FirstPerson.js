@@ -21,14 +21,14 @@ class FirstPerson extends Scene{
 
     this.floor = new THREE.Mesh(
         new THREE.PlaneGeometry(10, 10, 10, 10),
-        new THREE.MeshBasicMaterial({color: 0xffffff, wireframe:false})
+        new THREE.MeshBasicMaterial({color: 0xffffff, wireframe:true})
     );
     this.floor.rotation.x -= Math.PI / 2;
     this.scene.add(this.mesh);
     this.scene.add(this.floor);
     this.canvasWrapper.appendChild(this.canvas);
     this.setCameraPosition_XYZ(0, this.player.height,-5);
-    this.setCameraLookAt_XYZ(0,0,0);
+    this.setCameraLookAt_XYZ(0,this.player.height,0);
     this.animate();
   }
 
