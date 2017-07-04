@@ -1,5 +1,5 @@
 # general configuration
-url: http://excentris.net
+url: https://nhoughto5.github.io
 baseurl: 'NickHoughton'
 exclude: ['README.md', '.idea']
 
