@@ -1,6 +1,6 @@
 # general configuration
 url: https://nhoughto5.github.io
-baseurl: '/NickHoughton'
+baseurl: '/'
 exclude: ['README.md', '.idea']
 
 # compass configuration
