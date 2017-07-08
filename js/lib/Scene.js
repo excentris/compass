@@ -22,6 +22,36 @@ class Scene{
     this.attachListeners();
   }
 
+  loadObjectWithMaterial(objPath, materialPath, callback){
+    let mtlLoader = new THREE.MTLLoader();
+    mtlLoader.load(materialPath, function(mat){
+      mat.preload();
+      let objL = new THREE.OBJLoader();
+      objL.setMaterials(mat);
+      objL.load(objPath, function(mesh){
+        callback(mesh);
+      }.bind(this));
+    }.bind(this));
+  }
+
+  loadOBJNoMaterial(path, callback, colour){
+    let objLoader = new THREE.OBJLoader();
+    if(!colour){
+      colour = 'yellow';
+    }
+    let material = new THREE.MeshBasicMaterial({color: colour, side: THREE.DoubleSide});
+    objLoader.load(path, function (obj) {
+      obj.traverse(function (child) {
+
+        if (child instanceof THREE.Mesh) {
+          child.material = material;
+        }
+      });
+      //this.scene.add(obj);
+      callback(obj);
+    }.bind(this));
+  }
+
   onWindowResize(){
     let size = getViewport();
 

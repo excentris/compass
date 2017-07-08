@@ -16,39 +16,24 @@ class FirstPerson extends Scene{
   initScene(){
 
     this.textureLoader = new THREE.TextureLoader();
-    this.objLoader = new THREE.ObjectLoader();
 
     this.addLight();
-    this.addBox();
-    this.addCrate();
+    //this.addBox();
+    //this.addCrate();
     this.addFloor();
-    //this.addCar();
+    this.addLumberJack();
     this.canvasWrapper.appendChild(this.canvas);
     this.setCameraPosition_XYZ(0, this.player.height,-5);
     this.setCameraLookAt_XYZ(0,this.player.height,0);
     this.animate();
   }
 
-  addCar(){
-    this.mtlLoader.load("/assets/Car/r8_gt_obj.mtl", function(mat){
-      mat.preload();
-      let objL = new THREE.ObjectLoader();
-      objL.setMaterials(mat);
-      objL.load("/assets/Car/r8_gt_obj.obj", function(mesh){
-        this.scene.add(mesh);
-      }.bind(this));
-    }.bind(this));
-  }
-
-  loadObjectWithMaterial(objPath, materialPath){
-    this.mtlLoader.load(materialPath, function(mat){
-      mat.preload();
-      let objL = new THREE.ObjectLoader();
-      objL.setMaterials(mat);
-      objL.load(objPath, function(mesh){
-        return mesh;
-      }.bind(this));
-    }.bind(this));
+  addLumberJack(){
+    this.loadOBJNoMaterial("/models/lumberJack.obj", function(lumberJack){
+      this.lumberJack = lumberJack;
+      this.scene.add(lumberJack);
+      this.lumberJack.position.y += 2;
+    }.bind(this), 0x95f293);
   }
 
   addBox(){
@@ -102,8 +87,10 @@ class FirstPerson extends Scene{
   }
   animate(){
     super.render();
-    this.mesh.rotation.x += 0.01;
-    this.mesh.rotation.y += 0.00;
+    if(this.mesh){
+      this.mesh.rotation.x += 0.01;
+      this.mesh.rotation.y += 0.00;
+    }
     this.player.update();
   }
 }
