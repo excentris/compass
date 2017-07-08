@@ -3,23 +3,42 @@
  */
 
 class Scene{
-  constructor(w, h, cW){
+  constructor(w, h, cW, cN){
     this.width = w;
     this.height = h;
     this.canvasWrapper = cW;
     this.w_h_ratio = this.width / this.height;
+    this.canvasName = cN;
     this.init();
   }
 
   init(){
+    this.canvas = document.getElementById(this.canvasName);
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(90, this.width/this.height, 0.1, 1000);
-    this.renderer = new THREE.WebGLRenderer();
-    this.canvas = this.renderer.domElement;
+    this.renderer = new THREE.WebGLRenderer({canvas: this.canvas});
     this.renderer.setSize(this.width, this.height);
+    this.addInfoBox();
     this.setCameraPosition_XYZ(0,0,0);
     this.setCameraLookAt_XYZ(0,0,0);
     this.attachListeners();
+    this.setResponseMethods();
+  }
+
+  addInfoBox(){
+    this.infoBox = document.getElementById("infoBox");
+  }
+  setResponseMethods(){
+    this.onProgress = function ( xhr ) {
+      if ( xhr.lengthComputable ) {
+        var percentComplete = xhr.loaded / xhr.total * 100;
+        console.log( Math.round(percentComplete, 2) + '% downloaded' );
+      }
+    };
+
+    this.onError = function(xhr){
+
+    }
   }
 
   loadObjectWithMaterial(objPath, materialPath, callback){
@@ -34,6 +53,24 @@ class Scene{
     }.bind(this));
   }
 
+  loadOBJWithTexture(path, callback, diff, norm, bump){
+    let texLoader = new THREE.TextureLoader(), texture, bumpMap, normal;
+    if(diff) texture = new texLoader.load(diff);
+    if(bump) bumpMap = new texLoader.load(bump);
+    if(norm) normal = new texLoader.load(norm);
+    let loader = new THREE.OBJLoader();
+    loader.load( path, function( object ) {
+      object.traverse( function( child ) {
+        if ( child instanceof THREE.Mesh ) {
+          if(texture) child.material.map = texture;
+          if(bumpMap) child.material.bumpMap = bumpMap;
+          if(normal) child.material.normalMap = normal;
+        }
+      } );
+      callback(object);
+    }, this.onProgress, this.onError );
+  }
+  
   loadOBJNoMaterial(path, callback, colour){
     let objLoader = new THREE.OBJLoader();
     if(!colour){
@@ -47,7 +84,6 @@ class Scene{
           child.material = material;
         }
       });
-      //this.scene.add(obj);
       callback(obj);
     }.bind(this));
   }
@@ -78,6 +114,9 @@ class Scene{
 
   render(){
     requestAnimationFrame(this.animate.bind(this));
+    if(this.infoBox){
+      this.infoBox.innerHTML = "X: " + "100 Y: " + "200 Z: 300";
+    }
     this.renderer.render(this.scene, this.camera);
   }
 

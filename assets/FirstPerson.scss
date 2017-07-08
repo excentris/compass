@@ -1,20 +1,28 @@
 ---
 # This comment ensures Jekyll can see this file
 ---
-
-//canvas{
-//  padding-left: 0;
-//  padding-right: 0;
-//  margin-left: auto;
-//  margin-right: auto;
-//  display: block;
-//}
-
-.canvasWrapper{
-    width: 50vw;
-    height: 50vh;
-  canvas{
-
-    margin: 25vh 25vw;
-  }
+.firstPerson{
+  overflow:hidden;
+    .canvasWrapper{
+      width: 50vw;
+      height: 50vh;
+      margin: 50px 25%;
+      //width:50%;
+      //text-align:center;
+      canvas{
+        //display: inline;
+        margin: 50px 25%;
+      }
+    }
+    .infoBox{
+      color:red;
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+      p{
+        display: inline-block;
+      }
+    }
 }
+
+

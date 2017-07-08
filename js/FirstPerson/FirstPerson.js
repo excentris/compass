@@ -7,7 +7,7 @@
 class FirstPerson extends Scene{
   constructor(){
     let size = getViewport();
-    super(0.5 * size[0], 0.5 * size[1], document.getElementById("canvasWrapper"));
+    super(0.5 * size[0], 0.5 * size[1], document.getElementById("canvasWrapper"), "firstPersonCanvas");
     this.player = new Player({camera: this.camera});
     this.initScene();
     this.animate();
@@ -22,18 +22,17 @@ class FirstPerson extends Scene{
     //this.addCrate();
     this.addFloor();
     this.addLumberJack();
-    this.canvasWrapper.appendChild(this.canvas);
     this.setCameraPosition_XYZ(0, this.player.height,-5);
     this.setCameraLookAt_XYZ(0,this.player.height,0);
     this.animate();
   }
 
   addLumberJack(){
-    this.loadOBJNoMaterial("/models/lumberJack.obj", function(lumberJack){
+    this.loadOBJWithTexture("/models/lumberJack.obj", function(lumberJack){
       this.lumberJack = lumberJack;
       this.scene.add(lumberJack);
       this.lumberJack.position.y += 2;
-    }.bind(this), 0x95f293);
+    }.bind(this), "/models/lumberJack_diffuse.png", "/models/lumberJack_normal.png");
   }
 
   addBox(){
@@ -46,6 +45,7 @@ class FirstPerson extends Scene{
     this.mesh.castShadow = true;
     this.scene.add(this.mesh);
   }
+
   addFloor(){
     this.floor = new THREE.Mesh(
         new THREE.PlaneGeometry(20, 20, 10, 10),

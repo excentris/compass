@@ -1,7 +1,14 @@
 ---
 layout: base
 ---
-<div id="canvasWrapper" class="canvasWrapper"></div>
+<div class="firstPerson">
+    <div id="canvasWrapper" class="canvasWrapper">
+        <canvas id="firstPersonCanvas"></canvas>
+    </div>
+    <div id="infoBox" class="infoBox">
+    </div>
+</div>
+
 <script src="{{ site.baseurl }}/js/lib/Three.js"></script>
 <script src="{{ site.baseurl }}/js/FirstPerson/Controls.js"></script>
 <script src="{{ site.baseurl }}/js/lib/Scene.js"></script>
