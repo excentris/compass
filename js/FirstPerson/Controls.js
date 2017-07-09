@@ -54,6 +54,17 @@ class Controls{
     }
   }
 
+  strafeUp(){
+    if(this.keyboard[Z_KEY]){
+      this.camera.position.y += this.MOVEMENT_SPEED;
+    }
+  }
+  strafeDown(){
+    if(this.keyboard[X_KEY]){
+      this.camera.position.y -= this.MOVEMENT_SPEED;
+    }
+  }
+
   strafeLeft(){
     if(this.keyboard[A_KEY]){
       this.camera.position.x += Math.cos(this.camera.rotation.y) * this.MOVEMENT_SPEED;
@@ -90,5 +101,7 @@ class Controls{
     this.moveBackward();
     this.strafeRight();
     this.strafeLeft();
+    this.strafeUp();
+    this.strafeDown();
   }
 }

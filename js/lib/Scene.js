@@ -114,9 +114,6 @@ class Scene{
 
   render(){
     requestAnimationFrame(this.animate.bind(this));
-    if(this.infoBox){
-      this.infoBox.innerHTML = "X: " + "100 Y: " + "200 Z: 300";
-    }
     this.renderer.render(this.scene, this.camera);
   }
 

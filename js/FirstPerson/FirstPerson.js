@@ -31,7 +31,7 @@ class FirstPerson extends Scene{
     this.loadOBJWithTexture("/models/lumberJack.obj", function(lumberJack){
       this.lumberJack = lumberJack;
       this.scene.add(lumberJack);
-      this.lumberJack.position.y += 2;
+      this.lumberJack.position.y += 1;
     }.bind(this), "/models/lumberJack_diffuse.png", "/models/lumberJack_normal.png");
   }
 
@@ -78,8 +78,8 @@ class FirstPerson extends Scene{
   addLight(){
     this.ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
     this.scene.add(this.ambientLight);
-    this.pointLight = new THREE.PointLight(0xffffff, 0.8, 18);
-    this.pointLight.position.set(-3,6,-3);
+    this.pointLight = new THREE.PointLight(0xffffff, 1, 18);
+    this.pointLight.position.set(0,6,3);
     this.pointLight.castShadow = true;
     this.pointLight.shadow.camera.near = 0.1;
     this.pointLight.shadow.camera.far = 25;
@@ -87,6 +87,9 @@ class FirstPerson extends Scene{
   }
   animate(){
     super.render();
+    if(this.infoBox){
+      this.infoBox.innerHTML = "X: " + this.camera.position.x.toFixed(3) + "&nbsp&nbsp&nbsp Z: " + this.camera.position.z.toFixed(3) + "&nbsp&nbsp&nbsp Y: " + this.camera.position.y.toFixed(3);
+    }
     if(this.mesh){
       this.mesh.rotation.x += 0.01;
       this.mesh.rotation.y += 0.00;
