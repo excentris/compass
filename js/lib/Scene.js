@@ -3,51 +3,44 @@
  */
 
 class Scene{
-  constructor(w, h, cW, cN){
+  constructor(w, h, cN){
     this.width = w;
     this.height = h;
-    this.canvasWrapper = cW;
     this.w_h_ratio = this.width / this.height;
     this.canvasName = cN;
+    this.loadingManager = new THREE.LoadingManager();
+    this.RESOURCES_LOADED = false;
+    this.setResponseMethods();
     this.init();
   }
 
   init(){
     this.canvas = document.getElementById(this.canvasName);
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(45, this.width/this.height, 0.1, 1000);
     this.renderer = new THREE.WebGLRenderer({canvas: this.canvas});
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.BasicShadowMap;
     this.renderer.setSize(this.width, this.height);
-    this.addInfoBox();
-    this.setCameraPosition_XYZ(0,0,0);
-    this.setCameraLookAt_XYZ(0,0,0);
-    this.attachListeners();
-    this.setResponseMethods();
   }
 
   addInfoBox(){
     this.infoBox = document.getElementById("infoBox");
   }
   setResponseMethods(){
-    this.onProgress = function ( xhr ) {
-      if ( xhr.lengthComputable ) {
-        var percentComplete = xhr.loaded / xhr.total * 100;
-        console.log( Math.round(percentComplete, 2) + '% downloaded' );
-      }
+    this.loadingManager.onProgress = function(item, loaded, total){
+      console.log(item, loaded, total);
     };
-
-    this.onError = function(xhr){
-
-    }
+    
+    this.loadingManager.onLoad = function() {
+      console.log("Loaded All Resources");
+      this.RESOURCES_LOADED = true;
+    }.bind(this);
   }
 
   loadObjectWithMaterial(objPath, materialPath, callback){
-    let mtlLoader = new THREE.MTLLoader();
+    let mtlLoader = new THREE.MTLLoader(this.loadingManager);
     mtlLoader.load(materialPath, function(mat){
       mat.preload();
-      let objL = new THREE.OBJLoader();
+      let objL = new THREE.OBJLoader(this.loadingManager);
       objL.setMaterials(mat);
       objL.load(objPath, function(mesh){
         callback(mesh);
@@ -56,11 +49,11 @@ class Scene{
   }
 
   loadOBJWithTexture(path, callback, diff, norm, bump){
-    let texLoader = new THREE.TextureLoader(), texture, bumpMap, normal;
+    let texLoader = new THREE.TextureLoader(this.loadingManager), texture, bumpMap, normal;
     if(diff) texture = new texLoader.load(diff);
     if(bump) bumpMap = new texLoader.load(bump);
     if(norm) normal = new texLoader.load(norm);
-    let loader = new THREE.OBJLoader();
+    let loader = new THREE.OBJLoader(this.loadingManager);
     loader.load( path, function( object ) {
       object.traverse( function( child ) {
         if ( child instanceof THREE.Mesh ) {
@@ -76,7 +69,7 @@ class Scene{
   }
   
   loadOBJNoMaterial(path, callback, colour){
-    let objLoader = new THREE.OBJLoader();
+    let objLoader = new THREE.OBJLoader(this.loadingManager);
     if(!colour){
       colour = 'yellow';
     }
