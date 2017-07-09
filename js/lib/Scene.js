@@ -15,8 +15,10 @@ class Scene{
   init(){
     this.canvas = document.getElementById(this.canvasName);
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(90, this.width/this.height, 0.1, 1000);
+    this.camera = new THREE.PerspectiveCamera(45, this.width/this.height, 0.1, 1000);
     this.renderer = new THREE.WebGLRenderer({canvas: this.canvas});
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.BasicShadowMap;
     this.renderer.setSize(this.width, this.height);
     this.addInfoBox();
     this.setCameraPosition_XYZ(0,0,0);
@@ -65,6 +67,8 @@ class Scene{
           if(texture) child.material.map = texture;
           if(bumpMap) child.material.bumpMap = bumpMap;
           if(normal) child.material.normalMap = normal;
+          child.castShadow = true;
+          child.receiveShadow = true;
         }
       } );
       callback(object);
@@ -110,11 +114,6 @@ class Scene{
 
   setCameraLookAt_Vec3(vec){
     this.camera.lookAt(vec);
-  }
-
-  render(){
-    requestAnimationFrame(this.animate.bind(this));
-    this.renderer.render(this.scene, this.camera);
   }
 
   attachListeners(){
