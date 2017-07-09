@@ -110,3 +110,9 @@ let LIBS = {
     ];
   }
 };
+
+function generateRandomFloatRange(min, max, presicion) {
+  let int = Math.floor(Math.random()*200)-100;
+  let val = (Math.random() * (max - min) + min).toFixed(presicion || 4);
+  return int % 2 === 0 ? val : -val;
+};

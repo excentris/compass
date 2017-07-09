@@ -1,13 +1,14 @@
 /**
  * Created by nickhoughton on 7/4/17.
  */
+const DEFAULT_SPEED = 0.01;
 
 class Controls{
   constructor(params){
     this.camera = params.camera;
     this.keyboard = {};
-    this.ROTATION_SPEED = 0.01;
-    this.MOVEMENT_SPEED = 0.01;
+    this.ROTATION_SPEED = params.rotationSpeed || DEFAULT_SPEED;
+    this.MOVEMENT_SPEED = params.moveSpeed || DEFAULT_SPEED;
     this.config = WSAD;
   }
 

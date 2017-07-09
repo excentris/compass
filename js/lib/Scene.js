@@ -33,7 +33,12 @@ class Scene{
     this.loadingManager.onLoad = function() {
       console.log("Loaded All Resources");
       this.RESOURCES_LOADED = true;
+      this.onResourcesLoaded();
     }.bind(this);
+  }
+
+  onResourcesLoaded(){
+
   }
 
   loadObjectWithMaterial(objPath, materialPath, callback){
