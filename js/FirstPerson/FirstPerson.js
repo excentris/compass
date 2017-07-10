@@ -7,23 +7,6 @@ class FirstPerson extends Scene {
   constructor() {
     let size = getViewport();
     super(0.5 * size[0], 0.5 * size[1], "firstPersonCanvas");
-    this.models = {
-      tent: {
-        obj: '/models/Tent_Poles_01.obj',
-        mtl: '/models/Tent_Poles_01.mtl',
-        mesh: null
-      },
-      campfire: {
-        obj: 'models/Campfire_01.obj',
-        mtl: 'models/Campfire_01.mtl',
-        mesh: null
-      },
-      pirateship: {
-        obj: 'models/Pirateship.obj',
-        mtl: 'models/Pirateship.mtl',
-        mesh: null
-      }
-    };
 
     this.initLoadingScreen();
     this.initScene();
@@ -46,7 +29,6 @@ class FirstPerson extends Scene {
     this.loadingScreen.scene.add(this.loadingScreen.box);
   }
 
-
   initScene() {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 0.1, 1000);
@@ -59,6 +41,7 @@ class FirstPerson extends Scene {
     this.addBox();
     //this.addCrate();
     this.addFloor();
+    this.addGun();
     this.addLumberJack();
 
     this.player = new Player({
@@ -72,11 +55,23 @@ class FirstPerson extends Scene {
     this.animate();
   }
 
+  addGun(){
+    this.loadObjectWithMaterial("/models/uziGold.obj", "/models/uziGold.mtl", function(gun){
+      this.gun = gun;
+      this.gun.position.set(0,1.65,0);
+      this.gun.castShadow = false;
+      this.gun.receiveShadow = true;
+      this.gun.scale.set(5,5,5);
+
+      this.player.setGun(this.gun);
+
+      this.scene.add(this.gun);
+    }.bind(this));
+  }
   addLumberJack() {
     this.loadOBJWithTexture("/models/lumberJack.obj", function(lumberJack) {
       this.lumberJack = lumberJack;
       this.scene.add(lumberJack);
-      this.lumberJack.position.y += 1;
       this.lumberJack.castShadow = true;
       this.lumberJack.receiveShadow = true;
       this.lumberJack.position.set(0, 1, 5.35);
@@ -142,14 +137,22 @@ class FirstPerson extends Scene {
   }
 
   addLight() {
-    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
     this.scene.add(this.ambientLight);
+
     this.pointLight = new THREE.PointLight(0xffffff, 1.25, 18);
     this.pointLight.position.set(-3, 4, 3.3);
     this.pointLight.castShadow = true;
     this.pointLight.shadow.camera.near = 0.1;
     this.pointLight.shadow.camera.far = 40;
     this.scene.add(this.pointLight);
+
+    this.pointLight1 = new THREE.PointLight(0xffffff, 1.25, 18);
+    this.pointLight1.position.set(7, 2, -5.5);
+    this.pointLight1.castShadow = true;
+    this.pointLight1.shadow.camera.near = 0.1;
+    this.pointLight1.shadow.camera.far = 40;
+    this.scene.add(this.pointLight1);
   }
   animate() {
     if (!this.RESOURCES_LOADED) {
