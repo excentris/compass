@@ -8,6 +8,7 @@ class Player{
     this.moveSpeed = params.moveSpeed;
     this.rotSpeed = params.rotationSpeed;
     this.controls = new Controls(params);
+    this.clock = new THREE.Clock();
     this.attachListeners();
   }
 
@@ -16,10 +17,13 @@ class Player{
   }
 
   updateGun(){
+    const FREQUENCY = 6, AMPLITUDE = 0.01;
+    const time = Date.now() * 0.0005;
+    const delta = this.clock.getDelta();
     this.gun.position.set(
-        this.controls.camera.position.x - Math.sin(this.controls.camera.rotation.y) * 0.5,
-        this.controls.camera.position.y - 0.25,
-        this.controls.camera.position.z + Math.cos(this.controls.camera.rotation.y) * 0.5
+        this.controls.camera.position.x - Math.sin(this.controls.camera.rotation.y + Math.PI / 10) * 0.6,
+        this.controls.camera.position.y - 0.25 + Math.sin(FREQUENCY * time + this.controls.camera.position.x + this.controls.camera.position.z) * AMPLITUDE,
+        this.controls.camera.position.z + Math.cos(this.controls.camera.rotation.y + Math.PI / 10) * 0.6
     );
 
     this.gun.rotation.set(
@@ -28,6 +32,7 @@ class Player{
         this.controls.camera.rotation.z,
     );
   }
+
 
   update(){
     this.controls.checkInput(this.moveSpeed, this.rotSpeed);

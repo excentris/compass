@@ -32,6 +32,7 @@ class FirstPerson extends Scene {
   initScene() {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 0.1, 1000);
+
     this.addInfoBox();
     this.setCameraPosition_XYZ(0, 0, 0);
     this.setCameraLookAt_XYZ(0, 0, 0);
@@ -39,10 +40,11 @@ class FirstPerson extends Scene {
 
     this.addLight();
     this.addBox();
-    //this.addCrate();
+    this.addCrate();
     this.addFloor();
     this.addGun();
     this.addLumberJack();
+    this.addShip();
 
     this.player = new Player({
       camera: this.camera,
@@ -53,6 +55,16 @@ class FirstPerson extends Scene {
     this.setCameraPosition_XYZ(0, this.player.height, -5);
     this.setCameraLookAt_XYZ(0, this.player.height, 0);
     this.animate();
+  }
+
+  addShip(){
+    this.loadObjectWithMaterial("/models/Pirateship.obj", "/models/Pirateship.mtl", function(ship){
+      this.ship = ship;
+      this.ship.position.set(-6,0,-6);
+      this.ship.castShadow = true;
+      this.ship.receiveShadow = true;
+      this.scene.add(this.ship);
+    }.bind(this));
   }
 
   addGun(){
@@ -175,6 +187,9 @@ class FirstPerson extends Scene {
       }
       if (this.lumberJack) {
         this.lumberJack.rotation.y += Math.PI / 256;
+      }
+      if(this.ship){
+        //this.ship.rotation.z -= 0.005;
       }
       this.player.update();
     }
