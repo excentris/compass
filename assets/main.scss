@@ -34,11 +34,13 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-	color: $anchor-text-color;
+	//color: $anchor-text-color;
+	color: $text-color;
 	text-decoration: none;
 }
 
 a:hover {
+	color: $anchor-text-color;
 	text-decoration: underline;
 }
 
