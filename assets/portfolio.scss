@@ -5,6 +5,11 @@ $anchor-text-color: #CE534D;
 $background-color: #F1EED9;
 $shadow-color: #23221d;
 body {
+  .equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+  }
   font-family: 'Vollkorn', serif;
   color: $text-color;
   background-color: $background-color;
@@ -111,13 +116,18 @@ body {
   .portfolioGrid {
     text-align: center;
   }
+  .col-md-4{
+    padding-bottom: 20px;
+  }
 
   .portfolioEntry {
+    height: 100%;
     margin: 10px;
     padding: 10px;
     -webkit-box-shadow: 0px 7px 37px -3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 7px 37px -3px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 7px 37px -3px rgba(0, 0, 0, 0.75);
+
     .entryImage {
       height: 12vw;
       width: auto;
@@ -131,13 +141,19 @@ body {
         width: auto;
       }
     }
-  }
-  dl {
-    text-align: left;
-    dt {
-      font-size: 16px;
+    dl {
+      text-align: left;
+      dt {
+        margin-top: 5px;
+        font-size: 16px;
+        text-decoration: underline;
+      }
+      a{
+        color:$anchor-text-color;
+      }
     }
   }
+
   hr {
     border: 0;
     height: 1px;
@@ -146,4 +162,5 @@ body {
     background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
     background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
   }
+
 }
