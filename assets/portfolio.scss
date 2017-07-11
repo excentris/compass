@@ -1,3 +1,81 @@
 ---
 ---
+$text-color: #46433A;
+$anchor-text-color: #CE534D;
+$background-color: #F1EED9;
+$shadow-color: #23221d;
 
+body {
+  font-family: 'Vollkorn', serif;
+  color: $text-color;
+  background-color: $background-color;
+  .contentDiv {
+    z-index: 1;
+    position: relative;
+  }
+
+  .titleWrapper {
+    margin-top: 10vh;
+    h1 {
+      color: $text-color;
+      font-family: 'Rouge Script', cursive;
+      font-size: 5vw;
+      font-weight: normal;
+      line-height: 48px;
+      margin: 0 0 50px;
+      text-align: center;
+      text-shadow: 1px 1px 2px $shadow-color;
+    }
+    h3 {
+      color: $text-color;
+      font-family: 'Rouge Script', cursive;
+      font-size: 2.5vw;
+      font-weight: normal;
+      line-height: 48px;
+      margin: 0 0 50px;
+      text-align: center;
+      text-shadow: 1px 1px 2px $shadow-color;
+    }
+  }
+
+  .portfolioGrid{
+    text-align:center;
+  }
+
+  .portfolioEntry{
+    margin:10px;
+    padding:10px;
+    -webkit-box-shadow: 0px 7px 37px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 7px 37px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 7px 37px -3px rgba(0,0,0,0.75);
+
+    .entryImage{
+      height: 12vw;
+      width: auto;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      transition: all 1s ease;
+
+      &:hover{
+        height:16vw;
+        width:auto;
+      }
+    }
+  }
+  dl{
+    text-align: left;
+    dt{
+      font-size: 16px;
+    }
+  }
+  hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
+  }
+}
