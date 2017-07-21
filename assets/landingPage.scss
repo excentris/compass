@@ -1,6 +1,9 @@
 ---
 # This comment ensures Jekyll can see this file
 ---
+body{
+ background-color: #7ec0ee;
+}
 canvas{
   position: fixed;
   top: 0;
@@ -8,5 +11,5 @@ canvas{
   width:100%;
   height:100%;
   z-index: -1;
-  border: 1px solid black
+  //border: 1px solid black
 }
