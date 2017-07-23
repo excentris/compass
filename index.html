@@ -1,7 +1,7 @@
 ---
 layout: base
 ---
-<div class="wrapper">
+<div id="wrapper" class="wrapper">
     <header>
         {% if site.compass.logo %}
         <div class="logo-container">
@@ -31,14 +31,22 @@ layout: base
     <div class="section group">
         <div class="col span_4_of_12"></div>
         <div class="col span_1_of_12 noUnderline" style="text-align: center"><a href="https://github.com/nhoughto5" class="fa fa-github fa-3x"></a></div>
-        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a class="fa fa-envelope fa-3x"></a></div>
+        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a href="https://github.com/nhoughto5" class="fa fa-envelope fa-3x"></a></div>
         <div class="col span_1_of_12 noUnderline" style="text-align: center"><a href="/Portfolio" class="fa fa-folder-open fa-3x"></a></div>
         <div class="col span_1_of_12 noUnderline" style="text-align: center"><a href="/public/Hootin" class="fa fa-music fa-3x"></a></div>
         <div class="col span_4_of_12"></div>
     </div>
 </div>
-<!--<canvas id="landingPageCanvas"></canvas>-->
+
 <!--Phaser 2.8.1-->
+<script
+        src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+<script
+        src="http://code.jquery.com/color/jquery.color-2.1.2.min.js"
+        integrity="sha256-H28SdxWrZ387Ldn0qogCzFiUDDxfPiNIyJX7BECQkDE="
+        crossorigin="anonymous"></script>
 <script src="{{ site.baseurl }}/js/lib/phaser.min.js"></script>
 <script src="{{ site.baseurl }}/js/Common/Utils.js"></script>
 <script src="{{ site.baseurl }}/js/landingPage.js"></script>

@@ -1,22 +1,13 @@
 ---
 # This comment ensures Jekyll can see this file
 ---
-html {
-  margin: 0;
-  height: 100%;
-}
 body{
   margin: 0;
   height: 100%;
-  //background-color: #7ec0ee;
-  //background-image:
-  //  radial-gradient(
-  //    circle at top right,
-  //                  #abcdff,
-  //    #7ec0ee
-  //  );
-  background-image: radial-gradient(circle farthest-corner at 470px 47px , #FFFF80 15%, rgba(168, 193, 204, 0.4) 10%, #afd0ff 50%);
+  background-color: #AFD0FF;
+
 }
+
 canvas{
   position: fixed;
   top: 0;
