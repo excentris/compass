@@ -1,6 +1,9 @@
 ---
 ---
 #night{
+  display:none;
+  opacity:0.0;
+  filter:alpha(opacity=0);
   * {
     margin: 0;
     padding: 0;
