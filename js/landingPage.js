@@ -9,17 +9,17 @@ function main() {
   size = getViewport();
   game = new Phaser.Game(size[0], size[1], Phaser.CANVAS, 'body', null, true);
 
+  var mainState = {
+    preload: pre,
+    create: cre,
+    update: up
+  }
+
+
   game.state.add('mainState', mainState);
   game.state.start('mainState');
 }
 
-function randomFloat(min, max, pre){
-  if(pre === 0){
-    return Math.round(Math.random() * (min - max) + max);
-  }else{
-  return (Math.random() * (min - max) + max).toFixed(pre || 2);
-  }
-}
 function addCloud(i, n){
   var x = randomFloat(-game.width, game.width, 0);
   var y = randomFloat(0, game.height, 0);
@@ -36,29 +36,53 @@ function addCloud(i, n){
   //clouds[i].scale.x *= randomFloat(0, game.height, 0) % 2 === 0 ? -1 : 1;
 }
 
-var mainState = {
-  preload: function(){
-    cloudNames = ['cloud1', 'cloud2', 'cloud3'];
-    game.load.image(cloudNames[0], '/images/coud1.png');
-    game.load.image(cloudNames[1], '/images/cloud2.png');
-    game.load.image(cloudNames[2], '/images/cloud3.png');
+function pre(){
+  cloudNames = ['cloud1', 'cloud2', 'cloud3'];
+  game.load.image(cloudNames[0], '/images/coud1.png');
+  game.load.image(cloudNames[1], '/images/cloud2.png');
+  game.load.image(cloudNames[2], '/images/cloud3.png');
 
-  },
-  create: function(){
-    for(let i = 0; i < numClouds; ++i){
-      addCloud(i, randomFloat(0, 2, 0));
-    }
+}
 
-  },
-  update:function(){
-    for(let i = 0; i < numClouds; ++i){
-      if(clouds[i].position.x > game.width){
-        clouds[i].position.x = -clouds[i].width;
-        clouds[i].position.y = randomFloat(0, game.height, 0);
-        //clouds[i].scale.x *= randomFloat(0, game.height, 0) % 2 === 0 ? -1 : 1;
-      } 
+function cre(){
+  for(let i = 0; i < numClouds; ++i){
+    addCloud(i, randomFloat(0, 2, 0));
+  }
+
+}
+function up(){
+  for(let i = 0; i < numClouds; ++i){
+    if(clouds[i].position.x > game.width){
+      clouds[i].position.x = -clouds[i].width;
+      clouds[i].position.y = randomFloat(0, game.height, 0);
+      //clouds[i].scale.x *= randomFloat(0, game.height, 0) % 2 === 0 ? -1 : 1;
     }
   }
 }
+
+// var mainState = {
+//   preload: function(){
+//     cloudNames = ['cloud1', 'cloud2', 'cloud3'];
+//     game.load.image(cloudNames[0], '/images/coud1.png');
+//     game.load.image(cloudNames[1], '/images/cloud2.png');
+//     game.load.image(cloudNames[2], '/images/cloud3.png');
+//
+//   },
+//   create: function(){
+//     for(let i = 0; i < numClouds; ++i){
+//       addCloud(i, randomFloat(0, 2, 0));
+//     }
+//
+//   },
+//   update:function(){
+//     for(let i = 0; i < numClouds; ++i){
+//       if(clouds[i].position.x > game.width){
+//         clouds[i].position.x = -clouds[i].width;
+//         clouds[i].position.y = randomFloat(0, game.height, 0);
+//         //clouds[i].scale.x *= randomFloat(0, game.height, 0) % 2 === 0 ? -1 : 1;
+//       }
+//     }
+//   }
+// }
 
 window.onload = main;

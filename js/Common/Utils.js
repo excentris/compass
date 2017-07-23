@@ -30,6 +30,14 @@ function getViewport() {
   return [viewPortWidth, viewPortHeight];
 }
 
+function randomFloat(min, max, pre){
+  if(pre === 0){
+    return Math.round(Math.random() * (min - max) + max);
+  }else{
+    return (Math.random() * (min - max) + max).toFixed(pre || 2);
+  }
+}
+
 function getContext(CANVAS, ctxType) {
   try {
     if (ctxType === null || ctxType === "2d") {
