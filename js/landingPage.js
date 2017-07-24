@@ -89,12 +89,13 @@ function fadeNightIn(){
   }, 4200);
 }
 function toggleDayNight(){
-  if(day) {
-    fadeNightIn();
-  }else{
-    fadeNightOut()
-  }
-  day = !day;
+  // if(day) {
+  //   fadeNightIn();
+  // }else{
+  //   fadeNightOut()
+  // }
+  // day = !day;
+  $("body").toggleClass("day night", 4200);
 }
 window.onload = main;
 
