@@ -1,10 +1,18 @@
 ---
 # This comment ensures Jekyll can see this file
 ---
+$backGround: #71a4ec;
+$backGround2: #c4dff3;
 body{
   margin: 0;
   height: 100%;
-  background-color: #AFD0FF;
+  //background-color: #AFD0FF;
+  //background: linear-gradient(to bottom, #2a6fff 100%, #81d8ff 1%);
+    background: $backGround; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(0deg, $backGround, #b7fdff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(0deg, $backGround, $backGround2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(0deg, $backGround, $backGround2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(0deg, $backGround, $backGround2); /* Standard syntax (must be last) */
 }
 
 canvas{

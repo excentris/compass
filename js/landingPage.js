@@ -5,7 +5,7 @@
 var cloudField;
 var game, size;
 var clouds = [], cloudNames, numClouds = 5, sun, day = true;
-
+var numCloudImages = 9;
 function main() {
   $("night").css('opacity', 1.0);
   size = getViewport();
@@ -21,7 +21,7 @@ function addCloud(i, n){
   var dx = randomFloat(45, 55, 0);
   var sx = randomFloat(0.1, 0.4, 2);
   //var sy = randomFloat(0.1, 0.4, 2);
-  clouds[i] = game.add.sprite(0, 0, cloudNames[n]);
+  clouds[i] = game.add.sprite(0, 0, 'cloud' + n);
   clouds[i].position.y = y;
   clouds[i].position.x = x;
   game.physics.enable(clouds[i], Phaser.Physics.ARCADE);
@@ -35,25 +35,25 @@ function addSun(){
   sun.position.x = 0;
   sun.position.y = 0;
   game.physics.enable(sun, Phaser.Physics.ARCADE);
-  sun.body.velocity.x = 20;
-  sun.body.velocity.y = 20;
+  sun.body.velocity.x = 10;
+  sun.body.velocity.y = 1;
   sun.scale.setTo(0.1, 0.1);
   sun.anchor.setTo(0.5,0.5);
 }
 
 var mainState = {
   preload: function(){
-    cloudNames = ['cloud1', 'cloud2', 'cloud3'];
-    game.load.image(cloudNames[0], '/images/coud1.png');
-    game.load.image(cloudNames[1], '/images/cloud2.png');
-    game.load.image(cloudNames[2], '/images/cloud3.png');
+    for(let i = 1; i <= numCloudImages; ++i){
+      let n = 'cloud' + i;
+      game.load.image(n, '/images/' + n + '.png');
+    }
     game.load.image('sun', '/images/sun.png');
 
   },
   create: function(){
     addSun();
     for(let i = 0; i < numClouds; ++i){
-      addCloud(i, randomFloat(0, 2, 0));
+      addCloud(i, randomFloat(1, numCloudImages, 0));
     }
 
   },
