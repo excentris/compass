@@ -8,7 +8,10 @@ $background-color: #F1EED9;
 body {
 	font-family: 'Vollkorn', serif;
 	color: $text-color;
-	background-color: $background-color;
+
+	//width: 100%;
+	//height: 100%;
+	//padding: 0;
 	//text-shadow: 1px 1px 0px rgba(150, 150, 150, 1);
 	.contentDiv{
 		width: 100%;
