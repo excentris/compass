@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-  <body id="body" class="day">
-    <div class="stars"></div>
-    <div class="twinkling"></div>
+  <body id="body">
+    <div id="night" class="night">
+      <div class="stars"></div>
+      <div class="twinkling"></div>
+      <div class="clouds"></div>
+    </div>
     <div class="contentDiv">
       {{ content }}
     </div>
