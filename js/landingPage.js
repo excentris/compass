@@ -41,6 +41,10 @@ function addSun(){
 
 var mainState = {
   preload: function(){
+    game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
+    game.scale.setResizeCallback(function() {
+      game.scale.setMaximum();
+    });
     game.stage.disableVisibilityChange = true;
     game.canvas.className += "day";
     for(let i = 1; i <= numCloudImages; ++i){
