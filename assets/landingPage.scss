@@ -3,17 +3,19 @@
 ---
 $backGround: #71a4ec;
 $backGround2: #c4dff3;
-body{
+
+#bodyWrapper{
   margin: 0;
   height: 100%;
-
+  position: relative;
   .night{
     display:none;
     opacity:0.0;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     filter:alpha(opacity=0);
-    //z-index: -2;
+    z-index: -5;
+    position: absolute;
     @keyframes move-twink-back {
       from {background-position:0 0;}
       to {background-position:-10000px 5000px;}
@@ -86,7 +88,6 @@ body{
       animation:move-clouds-back 200s linear infinite;
     }
   }
-
 }
 
 canvas{

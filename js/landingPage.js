@@ -6,8 +6,8 @@ var game, size;
 var clouds = [], numClouds = 5, sun, day = true, lastTime = 0, timePattern = 10000, transitionTime = 5000;
 var numCloudImages = 9;
 function main() {
-  $("night").css('opacity', 1.0);
-  size = getViewport();
+  // $("night").css('opacity', 1.0);
+
   game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, 'body', null, true);
   game.state.add('mainState', mainState);
   game.state.start('mainState');
@@ -15,8 +15,6 @@ function main() {
 }
 
 function addCloud(i, n){
-  // var x = randomFloat(-game.width, game.width, 0);
-  // var y = randomFloat(0, game.height, 0);
   var sx = randomFloat(0.1, 0.4, 2);
   clouds[i] = game.add.sprite(0, 0, 'cloud' + n);
   clouds[i].position.y = randomFloat(0, game.height, 0);
@@ -103,19 +101,19 @@ function toggleDayNight(){
   }else{
     fadeNightOut()
   }
-  day = !day;
+  //day = !day;
 }
 function animate(currentTime){
-  if(day && $(night).css('opacity') == 1){
-    lastTime = currentTime;
-  }
-  if(!day && $(night).css('opacity') == 0){
-    lastTime = currentTime;
-  }
-  if(currentTime >= lastTime + timePattern){
-    toggleDayNight();
-    lastTime = currentTime;
-  }
+  // if(day && $(night).css('opacity') == 1){
+  //   lastTime = currentTime;
+  // }
+  // if(!day && $(night).css('opacity') == 0){
+  //   lastTime = currentTime;
+  // }
+  // if(currentTime >= lastTime + timePattern){
+  //   toggleDayNight();
+  //   lastTime = currentTime;
+  // }
   requestAnimationFrame(animate);
 }
 
