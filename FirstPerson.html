@@ -1,0 +1,25 @@
+---
+layout: base
+---
+<div class="firstPerson">
+    <div id="canvasWrapper" class="canvasWrapper">
+        <canvas id="firstPersonCanvas"></canvas>
+    </div>
+    <div id="infoBox" class="infoBox">
+    </div>
+</div>
+
+<script src="{{ site.baseurl }}/js/lib/Three.js"></script>
+<script src="{{ site.baseurl }}/js/FirstPerson/Controls.js"></script>
+<script src="{{ site.baseurl }}/js/lib/Scene.js"></script>
+<script src="{{ site.baseurl }}/js/lib/OBJLoader.js"></script>
+<script src="{{ site.baseurl }}/js/lib/MTLLoader.js"></script>
+<script src="{{ site.baseurl }}/js/FirstPerson/Player.js"></script>
+<script src="{{ site.baseurl }}/js/Common/Constants.js"></script>
+<script src="{{ site.baseurl }}/js/Common/Utils.js"></script>
+<script src="{{ site.baseurl }}/js/FirstPerson/FirstPerson.js"></script>
+<script>
+    $( document ).ready(function() {
+      new FirstPerson();
+    });
+</script>

@@ -1,0 +1,28 @@
+---
+# This comment ensures Jekyll can see this file
+---
+.firstPerson{
+  overflow:hidden;
+    .canvasWrapper{
+      width: 50vw;
+      height: 50vh;
+      margin: 50px 25%;
+      //width:50%;
+      //text-align:center;
+      canvas{
+        //display: inline;
+        margin: 50px 25%;
+      }
+    }
+    .infoBox{
+      color:red;
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+      p{
+        display: inline-block;
+      }
+    }
+}
+
+

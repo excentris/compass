@@ -1,0 +1,23 @@
+---
+# This comment ensures Jekyll can see this file
+---
+$backGround: #71a4ec;
+$backGround2: #c4dff3;
+
+canvas{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+  z-index: -10;
+  //border: 1px solid black;
+  &.day{
+    background: $backGround; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(0deg, $backGround, #b7fdff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(0deg, $backGround, $backGround2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(0deg, $backGround, $backGround2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(0deg, $backGround, $backGround2); /* Standard syntax (must be last) */
+
+  }
+}

@@ -1,27 +1,51 @@
 ---
 layout: base
 ---
-<div class="wrapper">
+<div id="wrapper" class="wrapper">
     <header>
         {% if site.compass.logo %}
         <div class="logo-container">
-          <a class="logo" href="{{ page.baseurl }}" style="background-image: url('{{ site.baseurl }}{{ site.compass.logo }}')"></a>
+            <a class="logo" href="{{ page.baseurl }}" style="background-image: url('{{ site.baseurl }}{{ site.compass.logo }}')"></a>
         </div>
         {% endif %}
-
         {% if site.compass.author %}
-        <div class="author-container"><h1>{{ site.compass.author }}</h1></div>
+        <div class="author-container">
+            <h1>{{ site.compass.author }}</h1>
+        </div>
         {% endif %}
-
         {% if site.compass.tagline %}
-        <div class="tagline-container"><p>{{ site.compass.tagline }}</p></div>
+        <div class="tagline-container">
+            <p>{{ site.compass.tagline }}</p>
+        </div>
         {% endif %}
     </header>
     <main>
-      {% if site.compass.include_content %}
-      <div class="content">
-        {% include content.html %}
-      </div>
-      {% endif %}
+        {% if site.compass.include_content %}
+        <div class="content">
+            {% include content.html %}
+        </div>
+        {% endif %}
     </main>
+    <hr>
+
+    <div class="section group">
+        <div class="col span_4_of_12"></div>
+        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a href="https://github.com/nhoughto5" class="fa fa-github fa-3x"></a></div>
+        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a onclick="toggleDayNight()" class="fa fa-envelope fa-3x"></a></div>
+        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a href="/Portfolio" class="fa fa-folder-open fa-3x"></a></div>
+        <div class="col span_1_of_12 noUnderline" style="text-align: center"><a href="/public/Hootin" class="fa fa-music fa-3x"></a></div>
+        <div class="col span_4_of_12"></div>
+    </div>
 </div>
+<script
+        src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+<script
+        src="http://code.jquery.com/color/jquery.color-2.1.2.min.js"
+        integrity="sha256-H28SdxWrZ387Ldn0qogCzFiUDDxfPiNIyJX7BECQkDE="
+        crossorigin="anonymous"></script>
+<script src="{{ site.baseurl }}/js/lib/phaser.min.js"></script>
+<script src="{{ site.baseurl }}/js/Common/Utils.js"></script>
+<script src="{{ site.baseurl }}/js/landingPage.js"></script>
+

@@ -1,0 +1,19 @@
+# Exported from Wings 3D 1.5.4
+newmtl Light_Wood
+Ns 100.0
+d 1.0
+illum 2
+Kd 0.937255 0.764706 0.501961
+Ka 0.0 0.0 0.0
+Ks 0.33 0.33 0.33
+Ke 0.0 0.0 0.0
+
+newmtl Wood
+Ns 100.0
+d 1.0
+illum 2
+Kd 0.666667 0.545098 0.356863
+Ka 0.0 0.0 0.0
+Ks 0.33 0.33 0.33
+Ke 0.0 0.0 0.0
+

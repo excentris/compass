@@ -1,0 +1,73 @@
+[{
+  "name": "layer 1",
+  "x": 74,
+  "y": 202,
+  "width": 63,
+  "height": 99
+}, {
+  "name": "Layer 2",
+  "x": 166,
+  "y": 97,
+  "width": 63,
+  "height": 100
+}, {
+  "name": "Layer 3",
+  "x": 138,
+  "y": 202,
+  "width": 44,
+  "height": 99
+}, {
+  "name": "Layer 4",
+  "x": 117,
+  "y": 101,
+  "width": 39,
+  "height": 99
+}, {
+  "name": "Layer 5",
+  "x": 183,
+  "y": 202,
+  "width": 38,
+  "height": 99
+}, {
+  "name": "Layer 6",
+  "x": 123,
+  "y": 0,
+  "width": 42,
+  "height": 99
+}, {
+  "name": "Layer 7",
+  "x": 73,
+  "y": 101,
+  "width": 43,
+  "height": 99
+}, {
+  "name": "Layer 8",
+  "x": 64,
+  "y": 0,
+  "width": 58,
+  "height": 99
+}, {
+  "name": "Layer 9",
+  "x": 166,
+  "y": 0,
+  "width": 64,
+  "height": 96
+}, {
+  "name": "Layer 10",
+  "x": 0,
+  "y": 0,
+  "width": 63,
+  "height": 100
+}, {
+  "name": "Layer 11",
+  "x": 0,
+  "y": 101,
+  "width": 72,
+  "height": 100
+}, {
+  "name": "Layer 12",
+  "x": 0,
+  "y": 202,
+  "width": 73,
+  "height": 99
+}]

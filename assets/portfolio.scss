@@ -1,0 +1,166 @@
+---
+---
+$text-color: #46433A;
+$anchor-text-color: #CE534D;
+$background-color: #F1EED9;
+$shadow-color: #23221d;
+body {
+  .equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+  }
+  font-family: 'Vollkorn', serif;
+  color: $text-color;
+  background-color: $background-color;
+  .contentDiv {
+    z-index: 1;
+    position: relative;
+  }
+  .titleWrapper {
+    margin-top: 10vh;
+    *, *:after, *:before {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0 none;
+      position: relative;
+      outline: none;
+    }
+    h1 {
+      color: $text-color;
+      font-family: 'Rouge Script', cursive;
+      font-size: 5vw;
+      font-weight: normal;
+      line-height: 48px;
+      margin: 0 0 50px;
+      text-align: center;
+      text-shadow: 1px 1px 2px $text-color;
+    }
+
+    h3 {
+      color: $text-color;
+      font-family: 'Rouge Script', cursive;
+      font-size: 2.5vw;
+      font-weight: normal;
+      line-height: 48px;
+      margin: 0 0 50px;
+      text-align: center;
+      text-shadow: 1px 1px 2px $text-color;
+    }
+
+    h3 > a {
+      text-decoration: none;
+      color: $text-color;
+      z-index: 1;
+    }
+    h3 > a:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background: $text-color;
+      visibility: hidden;
+      border-radius: 5px;
+      transform: scaleX(0);
+      transition: .25s linear;
+    }
+    h3 > a:hover:before,
+    h3 > a:focus:before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+    @keyframes hover-v {
+      0% {
+        transform: scaleX(0);
+        height: 5px;
+      }
+      45% {
+        transform: scaleX(1.05);
+        height: 5px;
+      }
+      55% {
+        height: 5px;
+      }
+      100% {
+        transform: scaleX(1.05);
+        height: 3.8rem;
+      }
+    }
+    @keyframes no-hover-v {
+      0% {
+        transform: scaleX(1.05);
+        height: 3.8rem;
+      }
+      45% {
+        height: 5px;
+      }
+      55% {
+        transform: scaleX(1.05);
+        height: 5px;
+        opacity: 1;
+      }
+      100% {
+        transform: scaleX(0);
+        height: 5px;
+        opacity: .02;
+      }
+    }
+  }
+
+  .portfolioGrid {
+    text-align: center;
+  }
+  .col-md-4{
+    padding-bottom: 20px;
+  }
+
+  .portfolioEntry {
+    height: 100%;
+    margin: 10px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 7px 37px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 7px 37px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 7px 37px -3px rgba(0, 0, 0, 0.75);
+
+    .entryImage {
+      height: 12vw;
+      width: auto;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      transition: all 1s ease;
+      &:hover {
+        height: 16vw;
+        width: auto;
+      }
+    }
+    dl {
+      text-align: left;
+      dt {
+        margin-top: 5px;
+        font-size: 16px;
+        text-decoration: underline;
+      }
+      a{
+        color:$anchor-text-color;
+      }
+    }
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
+    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
+    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), $text-color, rgba(0, 0, 0, 0));
+  }
+
+}

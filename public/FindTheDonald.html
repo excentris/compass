@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+    img {
+        position: absolute;
+    }
+    #wrapper {
+        min-height: 100%;
+    }
+    .hidden { display: none; }
+</style>
+<head>
+    <link rel="icon" href="trump.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="alertify.min.js"></script>
+    <link rel="stylesheet" href="alertify.core.css" />
+    <link rel="stylesheet" href="alertify.default.css" />
+</head>
+
+
+<body>
+<div id="wrapper" width: 100%; height: 100%; ></div>
+<script type="text/javascript">
+  var trumpLocationX;
+  var trumpLocationY;
+  var isDonaldShowing = false;
+  function allByClass(clss,parent){return (parent===undefined?document:parent).getElementsByClassName(clss);}
+  function byId(id){return document.getElementById(id);}
+  var maxDist;
+  var steepnessFactor = 5;	// inputs [0..1] will be raised to this power
+  var targetPoint;
+  var topLeft, topRight, botLeft, botRight;
+  var iWidth = 150, iHeight = 155;
+  var pageLoaded = false;
+  $( document ).ready(function() {
+    if(!pageLoaded){
+      pageLoaded = true;
+      welcome();
+    }
+    chooseLocation();
+    PositionImage();
+    $("#trumpImage").css('opacity', '0');
+    $("#trumpImage").on("click", function(e){
+      isDonaldShowing = true;
+      $("#trumpImage").animate({ opacity:1}, 1000);
+      alertify.set({ labels: {
+        ok     : "Find Him Again",
+        cancel : "Done with this guy!"
+      } });
+      setTimeout(showDialog, 1000);
+    });
+  });
+  function welcome(){
+    alertify.set({ labels: {
+      ok     : "Where Are You, Donnie?"
+    } });
+    alertify.alert("<h1>Find The Donald!</h1><p>Make sure your speakers are on.</p>");
+  }
+  function showDialog(){
+    // confirm dialog
+    alertify.confirm("<h1>You found the Donald!</h1>", function (e) {
+      if (e) {
+        // user clicked "ok"
+        var likeChina = new Audio('Sounds/iLikeChina.mp3');
+        likeChina.volume = 1;
+        likeChina.play();
+        $("#trumpImage").animate({ opacity:0}, 1500);
+        setTimeout(reloadPage, 1500);
+        isDonaldShowing = false;
+      } else {
+        // user clicked "cancel"
+        var beatChina = new Audio('Sounds/IBeatChinaAllTheTime.mp3');
+        beatChina.volume = 1;
+        beatChina.play();
+        setTimeout(redirect, 2000);
+      }
+    });
+  }
+  function reloadPage(){
+    location.reload();
+  }
+  function redirect(){
+    window.location.replace("/");
+  }
+  $("#wrapper").on("click",function(e){
+    var x = e.offsetX, y = e.offsetY;
+    console.log("Click: " + x + " " + y);
+    if (e.target.id == "trumpImage" || $(e.target).parents("#trumpImage").size()) {
+      var kaChing = new Audio('Sounds/kaChing.mp3');
+      kaChing.volume = 1;
+      kaChing.play();
+    } else {
+      if(!isDonaldShowing){
+        var China = new Audio('Sounds/China.mp3');
+        China.volume = getVolume(e);
+        China.play();
+      }
+    }
+  });
+  function PositionImage(){
+    $("#wrapper").each(function(e){
+      var screen = document.getElementById("wrapper");
+      var top = trumpLocationY, left = trumpLocationX;
+      console.log("screenX: " + screen.clientWidth + "  screenY: " + screen.clientHeight);
+      $('#trumpImage').remove();
+      var x = Math.round(left - iWidth/2);
+      var y = Math.round(top - iHeight/2);
+      targetPoint = new vec2_t(x,y);
+      console.log("TrumpPosition: " + x + " " + y);
+      $(this).append("<img src='trump.png' id='trumpImage' style='width:"+iWidth+"px; height: "+iHeight+"px; top:"+y+"px;left:"+x+"px;'/>");
+      document.getElementById('trumpImage').ondragstart = function() { return false; };
+    });
+  }
+  function getVolume(event){
+    var x = event.offsetX, y = event.offsetY;
+    var screen = document.getElementById("wrapper");
+    maxDist = getLongestPossibleDistance(screen.clientWidth, screen.clientHeight, trumpLocationX, trumpLocationY);
+    var curPos = new vec2_t(x, y);
+    var curVec = new vec2_t();
+    curVec.equals( curPos );
+    curVec.vecSub( targetPoint );
+    var curDist = curVec.vecLen();
+    var linearDist = (1-(curDist/maxDist));
+    x = linearDist;
+    y = Math.pow(linearDist, steepnessFactor);			// steepness of curve
+    return (y);
+  }
+  //Theoretically one of the 4 corners has to be the farthest from any point on the screen
+  function getLongestPossibleDistance(screenX, screenY, targetX, targetY){
+    var bottomLeft = Math.sqrt(Math.pow(targetX - 0,2) + Math.pow(targetY - screenY,2));
+    var topLeft = Math.sqrt(Math.pow(targetX - 0,2) + Math.pow(targetY - 0,2));
+    var bottomRight = Math.sqrt(Math.pow(targetX - screenX,2) + Math.pow(targetY - screenY,2));
+    var topRight = Math.sqrt(Math.pow(targetX - 0,2) + Math.pow(targetY - screenY,2));
+    return Math.max(Math.max(Math.max(bottomLeft, bottomRight), topLeft), topRight);
+  }
+  function getCoords(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+    return [x,y];
+  }
+  function chooseLocation(){
+    var screen = document.getElementById("wrapper");
+    trumpLocationX = getRandomInt(0, screen.clientWidth);
+    trumpLocationY = getRandomInt(0, screen.clientHeight);
+  }
+  function getRandomInt(min, max) {
+    var budget = 0.1;
+    min = max * budget;
+    max = max * (1-budget);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  function vec2_t(x,y){
+    this.x=x;
+    this.y=y;
+    this.equals = function(vec2){this.x = vec2.x; this.y = vec2.y;};
+    this.addVec = function(vec2){this.x += vec2.x; this.y += vec2.y;};
+    this.scalarMult = function(scalar){this.x *= scalar; this.y *= scalar;};
+    this.vecLen = function(){return Math.sqrt( this.x*this.x + this.y*this.y );};
+    this.normalize = function(){ var k = 1.0 / this.vecLen(); this.scalarMult(k); };
+    this.vecSub = function(vec2){this.x-=vec2.x;this.y-=vec2.y;};
+    this.toString = function(){return"<"+this.x+","+this.y+">";};
+    return this;
+  }
+</script>
+</body>
+</html>

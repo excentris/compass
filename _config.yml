@@ -1,15 +1,16 @@
 # general configuration
-url: http://excentris.net
-baseurl: '/compass'
+url: https://nhoughto5.github.io
+baseurl: ''
+exclude: ['README.md', '.idea']
 
 # compass configuration
 compass:
   # an avatar or logo (optional)
   logo: "/images/compass.png"
   # author will appear under the avatar (optional)
-  author: "Compass"
+  author: "Nick Houghton"
   # tagline will appear under the title (optional)
-  tagline: "The <a href='http://jekyllrb.com'>Jekyll</a> theme for your personal landing page"
+  tagline: "There is not enough time to <font color='red'>learn</font> it all"
   # if include_content is true, the contents of the content.html include will be
   # added right above the generated item list, if present
   include_content: true
@@ -17,6 +18,9 @@ compass:
   # be added at the end of the <head> section. You can add your Google Analytics
   # Tracking Code to that file.
   include_analytics: true
+
+# exclude
+exclude: ["CNAME", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
 
 # Dependencies
 markdown: kramdown

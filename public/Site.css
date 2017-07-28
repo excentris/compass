@@ -1,0 +1,83 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: black;
+    background-image:url(background2.jpg);
+    background-size: 1920px 800px;
+    background-position-x:center;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    display: compact;
+    margin: 0;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.post-comments {
+    padding-bottom: 9px;
+    margin: 5px 0 5px;
+}
+
+.comments-nav {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.post-comments .comment-meta {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.post-comments .media {
+    border-left: 1px dotted #000;
+    border-bottom: 1px dotted #000;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+.post-comments .media-heading {
+    font-size: 12px;
+    color: grey;
+}
+
+.post-comments .comment-meta a {
+    font-size: 12px;
+    color: grey;
+    font-weight: bolder;
+    margin-right: 5px;
+}
+
+IMG.headline {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jumbotron2 {
+    background: rgb(21, 21, 21); /* This is for ie8 and below */
+    background: rgba(21, 21, 21, 0.7);
+}
+th {
+    text-align: center;
+}
+.tableCell{
+    padding-top:40px;
+}
