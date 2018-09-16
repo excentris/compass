@@ -1,6 +1,6 @@
 # general configuration
-url: http://excentris.net
-baseurl: ''
+url: https://bojne.github.io
+baseurl: '/bojne.github.io/'
 
 # compass configuration
 compass:
