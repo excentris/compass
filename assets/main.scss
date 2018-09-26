@@ -126,6 +126,16 @@ footer {
 	}
 }
 
+@media (max-width: 768px) {
+	.main-list {
+		max-width: 100vw;
+		text-align: center;
+	}
+	.main-list-item {
+		font-size: 0.8em;
+	}
+}
+
 /* All other devices (768px and up) */
 @media (min-width: 768px) {
 	/* past 768px the layout is changed and the wrapper has a fixed width of 680px
