@@ -1,15 +1,15 @@
 # general configuration
-url: http://excentris.net
+url: http://mwisniewski.pl
 baseurl: ''
 
 # compass configuration
 compass:
   # an avatar or logo (optional)
-  logo: "/images/compass.png"
+  logo: "/images/photo.png"
   # author will appear under the avatar (optional)
-  author: "Compass"
+  author: "Michał Wiśniewski"
   # tagline will appear under the title (optional)
-  tagline: "The <a href='http://jekyllrb.com'>Jekyll</a> theme for your personal landing page"
+  tagline: "NodeJS Developer"
   # if include_content is true, the contents of the content.html include will be
   # added right above the generated item list, if present
   include_content: true
