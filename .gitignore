@@ -1,5 +1,4 @@
 .firebase
 _site
 .firebaserc
-firebase.json
 Gemfile.lock
