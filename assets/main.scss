@@ -37,9 +37,15 @@ a:hover {
 
 /*** main content list ***/
 .main-list-item {
+	display: inline;
 	font-weight: bold;
-	font-size: 1.2em;
-	margin: 0.8em 0;
+	font-size: 1.1em;
+	padding: 0 1em;
+	border-right: 2px solid $text-color;
+}
+
+.main-list-item:last-child {
+	border: none;
 }
 
 /* override the left margin added by font awesome for the main content list,
@@ -87,6 +93,7 @@ since it must be aligned with the content */
 
 /******/
 hr {
+	margin: 1em 0;
 	border: 0;
 	height: 1px;
 	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
@@ -97,9 +104,8 @@ hr {
 
 /*** footer ***/
 footer {
-	position: fixed;
-	bottom: 0;
-	right: 0;
+	text-align: right;
+	margin-right: 10px;
 	height: 20px;
 }
 
@@ -117,6 +123,16 @@ footer {
 	.wrapper {
 		width: 480px;
 		margin: 10% auto 0 auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.main-list {
+		max-width: 100vw;
+		text-align: center;
+	}
+	.main-list-item {
+		font-size: 0.8em;
 	}
 }
 
