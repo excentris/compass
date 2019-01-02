@@ -1,5 +1,5 @@
 # general configuration
-url: http://excentris.net
+url: http://jjscaria.com
 baseurl: ''
 
 # compass configuration
@@ -7,18 +7,18 @@ compass:
   # an avatar or logo (optional)
   logo: "/images/compass.png"
   # author will appear under the avatar (optional)
-  author: "Compass"
+  author: "Jithin Scaria"
   # tagline will appear under the title (optional)
-  tagline: "The <a href='http://jekyllrb.com'>Jekyll</a> theme for your personal landing page"
+  tagline: "DevOps. Automation. Engineer."
   # if include_content is true, the contents of the content.html include will be
   # added right above the generated item list, if present
   include_content: true
   # if include_analytics is true, the content of the analytics.html include will
   # be added at the end of the <head> section. You can add your Google Analytics
   # Tracking Code to that file.
-  include_analytics: false
+  include_analytics: true
   # Twitter @username (as defined by the Twitter Card specs)
-  twitter: "compass"
+  # twitter: "compass"
 
 # exclude
 exclude: ["CNAME", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
