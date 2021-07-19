@@ -148,3 +148,22 @@ footer {
 		padding: 0;
 	}
 }
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+	body {
+	  color: mix($text-color,#bfbfbf,12%);
+	  background-color: mix($background-color,#0d0d0d,5%);
+	}
+
+	a:link, a:visited, a:hover, a:active {
+	  color: mix($anchor-text-color, white, 50%);
+	}
+
+	.main-list-item-icon {
+	  color: lighten($text-color,60%);
+	}
+	.logo {
+	  border-color: rgba($background-color,0.8);
+	  box-shadow: 0 0 0 3px rgba($text-color,0.8);
+	}
+}
